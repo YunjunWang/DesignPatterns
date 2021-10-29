@@ -1,12 +1,23 @@
 public class Main {
     public static void main(String[] args) {
-        // class
+        // Class
         User user = new User("Yunjun");
         user.sayHello();
 
-        // interface
+        // Interface: a contract that specifies the capabilities of
+        // a class should provide. This provides loosely coupled
+        // applications.
         TaxCalculator calculator2019 = getCalculator();
         calculator2019.calculateTax();
+
+        // Encapsulation: Bundling the data and methods that operaton
+        // on the data within a unit or a class and hiding the values
+        // or state of an object inside the class. So with this, we can
+        // create robust applications that prevent our objects from going
+        // in an invalid state.
+        var account = new Account();
+        account.deposit(10);
+        account.withdraw(5);
     }
 
     public static TaxCalculator getCalculator() {
