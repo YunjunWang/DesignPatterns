@@ -1,4 +1,4 @@
-public class UIControl {
+public abstract class UIControl {
     public void enable() {
         System.out.println("Enabled");
     }
@@ -10,4 +10,6 @@ public class UIControl {
     public void setPosition() {
         System.out.println("Set position");
     }
+
+    public abstract void draw();
 }

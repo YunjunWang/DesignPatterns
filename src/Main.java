@@ -25,16 +25,24 @@ public class Main {
         MailService mailService = new MailService();
         mailService.sendMail();
 
-        // Inheritance : A mechanism to reuse code across classes.
+        // Inheritance: A mechanism to reuse code across classes.
         // Check it our more in "Ultimate Java" course
         TextBox textBox = new TextBox();
         textBox.enable();
         // RadioButton
         // DropdownList
         // ...
+
+        // Polymorphism: The ability of an object to take on many forms
+        draw(textBox);
+        draw(new Checkbox());
     }
 
     public static TaxCalculator getCalculator() {
         return new TaxCalculator2019();
+    }
+
+    public static void draw(UIControl control) {
+        control.draw();
     }
 }
