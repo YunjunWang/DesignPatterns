@@ -19,9 +19,19 @@ public class Main {
         account.deposit(10);
         account.withdraw(5);
 
-        // Abstraction
+        // Abstraction: To reduce complexity by hiding unnecessary implementation
+        // details ( by using private methods/attributes )
+        // only use public when needed.
         MailService mailService = new MailService();
         mailService.sendMail();
+
+        // Inheritance : A mechanism to reuse code across classes.
+        // Check it our more in "Ultimate Java" course
+        TextBox textBox = new TextBox();
+        textBox.enable();
+        // RadioButton
+        // DropdownList
+        // ...
     }
 
     public static TaxCalculator getCalculator() {
