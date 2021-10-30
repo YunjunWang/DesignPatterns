@@ -15,9 +15,13 @@ public class Main {
         // or state of an object inside the class. So with this, we can
         // create robust applications that prevent our objects from going
         // in an invalid state.
-        var account = new Account();
+        Account account = new Account();
         account.deposit(10);
         account.withdraw(5);
+
+        // Abstraction
+        MailService mailService = new MailService();
+        mailService.sendMail();
     }
 
     public static TaxCalculator getCalculator() {
