@@ -1,3 +1,8 @@
+import MomentoPattern.Document.Document;
+import MomentoPattern.Document.History;
+import MomentoPattern.Document.Prototype.Caretaker;
+import MomentoPattern.Document.Prototype.Originator;
+
 public class Main {
     public static void main(String[] args) {
         // Class
@@ -36,6 +41,32 @@ public class Main {
         // Polymorphism: The ability of an object to take on many forms
         draw(textBox);
         draw(new Checkbox());
+
+        //Momento Pattern
+        Originator originator = new Originator();
+        Caretaker caretaker =  new Caretaker();
+
+        originator.setContent("content1");
+        caretaker.push(originator.createState());
+        originator.setContent("content2");
+        caretaker.push(originator.createState());
+        originator.setContent("content3");
+        originator.restoreState(caretaker.pop());
+        System.out.println(originator.getContent());
+
+
+        Document doc = new Document();
+        History history = new History();
+
+        doc.setState("content1", "fontName1", "fontSize1");
+        history.push(doc.createState());
+
+        doc.setState("content2", "fontName2", "fontSize2");
+        history.push(doc.createState());
+
+        doc.setState("content3", "fontName3", "fontSize3");
+        doc.restoreContent(history.revertContent());
+        System.out.println(doc.getContent());
     }
 
     public static TaxCalculator getCalculator() {
