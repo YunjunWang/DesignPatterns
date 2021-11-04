@@ -1,7 +1,15 @@
+import Abstraction.MailService;
+import Class.User;
+import Encapsulation.Account;
+import Interface.TaxCalculator;
+import Interface.TaxCalculator2019;
 import Memento.Exercise.Document;
 import Memento.Exercise.History;
 import Memento.Demo.Caretaker;
 import Memento.Demo.Originator;
+import InheritancePolymorphism.Checkbox;
+import InheritancePolymorphism.TextBox;
+import InheritancePolymorphism.UIControl;
 import State.Demo.Brush;
 import State.Demo.Selection;
 import State.exercise.CalculateMap;

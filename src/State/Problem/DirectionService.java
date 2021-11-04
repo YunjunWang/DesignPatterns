@@ -1,4 +1,4 @@
-package State.exercise;
+package State.Problem;
 
 public class DirectionService {
     private TravelMode travelMode;

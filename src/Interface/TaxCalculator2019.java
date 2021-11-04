@@ -1,3 +1,5 @@
+package Interface;
+
 public class TaxCalculator2019 implements TaxCalculator{
     @Override
     public float calculateTax() {

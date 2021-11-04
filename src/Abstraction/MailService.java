@@ -1,3 +1,5 @@
+package Abstraction;
+
 // Abstraction principle
 public class MailService {
     // interface that cares

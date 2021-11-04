@@ -5,8 +5,8 @@ public class Document {
     private String fontName;
     private String fontSize;
 
-    public Momento createState() {
-        return new Momento(content, fontName, fontSize);
+    public Memento createState() {
+        return new Memento(content, fontName, fontSize);
     }
 
     public void restoreContent(String content) {

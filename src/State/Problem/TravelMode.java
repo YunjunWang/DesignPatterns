@@ -1,4 +1,4 @@
-package State.exercise;
+package State.Problem;
 
 public enum TravelMode {
     DRIVING,

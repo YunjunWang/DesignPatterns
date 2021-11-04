@@ -1,3 +1,5 @@
+package InheritancePolymorphism;
+
 public abstract class UIControl {
     public void enable() {
         System.out.println("Enabled");
