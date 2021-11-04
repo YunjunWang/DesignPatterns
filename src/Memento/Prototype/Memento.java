@@ -1,9 +1,9 @@
-package MomentoPattern.Document.Prototype;
+package Memento.Prototype;
 
-public class Momento {
+public class Memento {
     final private String content;
 
-    public Momento(String content) {
+    public Memento(String content) {
         this.content = content;
     }
 

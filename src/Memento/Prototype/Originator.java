@@ -1,14 +1,14 @@
-package MomentoPattern.Document.Prototype;
+package Memento.Prototype;
 
 public class Originator {
     private String content;
 
 
-    public Momento createState() {
-        return new Momento(content);
+    public Memento createState() {
+        return new Memento(content);
     }
 
-    public void restoreState(Momento state) {
+    public void restoreState(Memento state) {
         this.content = state.getContent();
     }
 

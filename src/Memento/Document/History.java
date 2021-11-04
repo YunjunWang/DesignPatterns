@@ -1,4 +1,4 @@
-package MomentoPattern.Document;
+package Memento.Document;
 
 import java.util.ArrayList;
 import java.util.List;

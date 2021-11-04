@@ -1,4 +1,4 @@
-package MomentoPattern.Document;
+package Memento.Document;
 
 public class Momento {
     final private String content;
