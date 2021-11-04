@@ -1,4 +1,4 @@
-package Memento.Document;
+package Memento.Exercise;
 
 import java.util.ArrayList;
 import java.util.List;

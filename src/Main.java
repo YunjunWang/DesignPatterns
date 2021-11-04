@@ -1,9 +1,12 @@
-import Memento.Document.Document;
-import Memento.Document.History;
-import Memento.Prototype.Caretaker;
-import Memento.Prototype.Originator;
-import State.Brush;
-import State.Selection;
+import Memento.Exercise.Document;
+import Memento.Exercise.History;
+import Memento.Demo.Caretaker;
+import Memento.Demo.Originator;
+import State.Demo.Brush;
+import State.Demo.Selection;
+import State.exercise.CalculateMap;
+import State.exercise.Cycling;
+import State.exercise.Driving;
 
 public class Main {
     public static void main(String[] args) {
@@ -87,6 +90,13 @@ public class Main {
         brush.mouseDown();
         brush.mouseUp();
 
+        CalculateMap calculateDriving = new Driving();
+        calculateDriving.getEta();
+        calculateDriving.getDirection();
+
+        CalculateMap calculateCycling = new Cycling();
+        calculateCycling.getEta();
+        calculateCycling.getDirection();
 
     }
 

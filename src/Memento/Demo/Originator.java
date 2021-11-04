@@ -1,4 +1,4 @@
-package Memento.Prototype;
+package Memento.Demo;
 
 public class Originator {
     private String content;

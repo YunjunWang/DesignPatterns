@@ -1,4 +1,4 @@
-package Memento.Document;
+package Memento.Exercise;
 
 public class Momento {
     final private String content;

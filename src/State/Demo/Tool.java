@@ -1,4 +1,4 @@
-package State;
+package State.Demo;
 
 public interface Tool {
     void mouseDown();
