@@ -14,9 +14,7 @@ import InheritancePolymorphism.UIControl;
 import State.Demo.Brush;
 import State.Demo.Canvas;
 import State.Demo.Selection;
-import State.exercise.CalculateMap;
-import State.exercise.Cycling;
-import State.exercise.Driving;
+import State.Exercise.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -55,13 +53,18 @@ public class Main {
         canvas.mouseDown();
         canvas.mouseUp();
 
-        CalculateMap calculateDriving = new Driving();
-        calculateDriving.getEta();
-        calculateDriving.getDirection();
+        Map map = new Map();
+        map.setCurrentMethod(new Driving());
+        map.getEta();
+        map.getDirection();
 
-        CalculateMap calculateCycling = new Cycling();
-        calculateCycling.getEta();
-        calculateCycling.getDirection();
+        map.setCurrentMethod(new Cycling());
+        map.getEta();
+        map.getDirection();
+
+        map.setCurrentMethod(new Walking());
+        map.getEta();
+        map.getDirection();
     }
     public static void mementoPatter() {
         //Memento Pattern

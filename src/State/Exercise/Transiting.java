@@ -1,6 +1,6 @@
-package State.exercise;
+package State.Exercise;
 
-public class Transiting implements CalculateMap {
+public class Transiting implements Calculator {
     @Override
     public Object getEta() {
         System.out.println("Calculating ETA (transit)");
