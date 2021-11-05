@@ -3,6 +3,7 @@ import Class.User;
 import Encapsulation.Account;
 import Interface.TaxCalculator;
 import Interface.TaxCalculator2019;
+import Iterator.Problem.BrowseHistory;
 import Memento.Exercise.Document;
 import Memento.Exercise.History;
 import Memento.Demo.Caretaker;
@@ -11,6 +12,7 @@ import InheritancePolymorphism.Checkbox;
 import InheritancePolymorphism.TextBox;
 import InheritancePolymorphism.UIControl;
 import State.Demo.Brush;
+import State.Demo.Canvas;
 import State.Demo.Selection;
 import State.exercise.CalculateMap;
 import State.exercise.Cycling;
@@ -18,51 +20,52 @@ import State.exercise.Driving;
 
 public class Main {
     public static void main(String[] args) {
-        // Class
-        System.out.println("__________Class__________");
-        User user = new User("Yunjun");
-        user.sayHello();
+        classEssence();
+        interfacePrinciple();
+        encapsulationPrinciple();
+        abstractionPrinciple();
+        inheritancePrinciple();
+        polymorphismPrinciple();
+        mementoPatter();
+        statePattern();
+        iteratorPattern();
+    }
 
-        // Interface: a contract that specifies the capabilities of
-        // a class should provide. This provides loosely coupled
-        // applications.
-        System.out.println("__________Interface__________");
-        TaxCalculator calculator2019 = getCalculator();
-        calculator2019.calculateTax();
+    public static void iteratorPattern() {
+        // Iterator Pattern
+        System.out.println("\n__________Iterator Pattern__________");
+        BrowseHistory browseHistory = new BrowseHistory();
+        browseHistory.push("a");
+        browseHistory.push("b");
+        browseHistory.push("c");
 
-        // Encapsulation: Bundling the data and methods that operation
-        // on the data within a unit or a class and hiding the values
-        // or state of an object inside the class. So with this, we can
-        // create robust applications that prevent our objects from going
-        // in an invalid state.
-        System.out.println("__________Encapsulation__________");
-        Account account = new Account();
-        account.deposit(10);
-        account.withdraw(5);
+        for(int i = 0; i < browseHistory.getUrls().size(); i++) {
+            String url = browseHistory.getUrls().get(i);
+            System.out.println(url);
+        }
+    }
+    public static void statePattern() {
+        System.out.println("\n__________State Pattern__________");
+        Canvas canvas = new Canvas();
+        canvas.setCurrentTool(new Selection());
+        canvas.mouseDown();
+        canvas.mouseUp();
 
-        // Abstraction: To reduce complexity by hiding unnecessary implementation
-        // details ( by using private methods/attributes )
-        // only use public when needed.
-        System.out.println("__________Abstraction__________");
-        MailService mailService = new MailService();
-        mailService.sendMail();
+        canvas.setCurrentTool(new Brush());
+        canvas.mouseDown();
+        canvas.mouseUp();
 
-        // Inheritance: A mechanism to reuse code across classes.
-        // Check it our more in "Ultimate Java" course
-        System.out.println("__________Inheritance__________");
-        TextBox textBox = new TextBox();
-        textBox.enable();
-        // RadioButton
-        // DropdownList
-        // ...
+        CalculateMap calculateDriving = new Driving();
+        calculateDriving.getEta();
+        calculateDriving.getDirection();
 
-        // Polymorphism: The ability of an object to take on many forms
-        System.out.println("__________Polymorphism__________");
-        draw(textBox);
-        draw(new Checkbox());
-
+        CalculateMap calculateCycling = new Cycling();
+        calculateCycling.getEta();
+        calculateCycling.getDirection();
+    }
+    public static void mementoPatter() {
         //Memento Pattern
-        System.out.println("__________Memento Pattern__________");
+        System.out.println("\n__________Memento Pattern__________");
         Originator originator = new Originator();
         Caretaker caretaker =  new Caretaker();
 
@@ -87,32 +90,61 @@ public class Main {
         doc.setState("content3", "fontName3", "fontSize3");
         doc.restoreContent(history.revertContent());
         System.out.println(doc.getContent());
-
-        // State Pattern
-        System.out.println("__________State Pattern__________");
-        Selection selection = new Selection();
-        selection.mouseDown();
-        selection.mouseUp();
-
-        Brush brush = new Brush();
-        brush.mouseDown();
-        brush.mouseUp();
-
-        CalculateMap calculateDriving = new Driving();
-        calculateDriving.getEta();
-        calculateDriving.getDirection();
-
-        CalculateMap calculateCycling = new Cycling();
-        calculateCycling.getEta();
-        calculateCycling.getDirection();
-
     }
-
+    public static void polymorphismPrinciple() {
+        // Polymorphism: The ability of an object to take on many forms
+        TextBox textBox = new TextBox();
+        System.out.println("\n__________Polymorphism__________");
+        draw(textBox);
+        draw(new Checkbox());
+    }
+    public static void inheritancePrinciple() {
+        // Inheritance: A mechanism to reuse code across classes.
+        // Check it our more in "Ultimate Java" course
+        System.out.println("\n__________Inheritance__________");
+        TextBox textBox = new TextBox();
+        textBox.enable();
+        // RadioButton
+        // DropdownList
+        // ...
+    }
     public static TaxCalculator getCalculator() {
         return new TaxCalculator2019();
     }
-
     public static void draw(UIControl control) {
         control.draw();
+    }
+    public static void abstractionPrinciple() {
+        // Abstraction: To reduce complexity by hiding unnecessary implementation
+        // details ( by using private methods/attributes )
+        // only use public when needed.
+        System.out.println("\n__________Abstraction__________");
+        MailService mailService = new MailService();
+        mailService.sendMail();
+    }
+    public static void encapsulationPrinciple() {
+        // Encapsulation: Bundling the data and methods that operation
+        // on the data within a unit or a class and hiding the values
+        // or state of an object inside the class. So with this, we can
+        // create robust applications that prevent our objects from going
+        // in an invalid state.
+        System.out.println("\n__________Encapsulation__________");
+        Account account = new Account();
+        account.deposit(10);
+        account.withdraw(5);
+    }
+    public static void interfacePrinciple() {
+        // Interface: a contract that specifies the capabilities of
+        // a class should provide. This provides loosely coupled
+        // applications.
+        System.out.println("\n__________Interface__________");
+        TaxCalculator calculator2019 = getCalculator();
+        calculator2019.calculateTax();
+    }
+    public static void classEssence() {
+        // Class
+        System.out.println("\n__________Class__________");
+        User user = new User("Yunjun");
+        user.sayHello();
     }
 }
