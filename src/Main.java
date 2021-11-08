@@ -3,7 +3,8 @@ import Class.User;
 import Encapsulation.Account;
 import Interface.TaxCalculator;
 import Interface.TaxCalculator2019;
-import Iterator.Problem.BrowseHistory;
+import Iterator.Iterator;
+import Iterator.Demo.BrowseHistory;
 import Memento.Exercise.Document;
 import Memento.Exercise.History;
 import Memento.Demo.Caretaker;
@@ -37,9 +38,14 @@ public class Main {
         browseHistory.push("b");
         browseHistory.push("c");
 
-        for(int i = 0; i < browseHistory.getUrls().size(); i++) {
-            String url = browseHistory.getUrls().get(i);
-            System.out.println(url);
+//        for(int i = 0; i < browseHistory.getUrls().size(); i++) {
+//            String url = browseHistory.getUrls().get(i);
+//            System.out.println(url);
+//        }
+        Iterator iterator = browseHistory.createIterator();
+        while(iterator.hasNext()) {
+            System.out.println(iterator.current());
+            iterator.next();
         }
     }
     public static void statePattern() {
