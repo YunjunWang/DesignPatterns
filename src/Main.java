@@ -16,6 +16,14 @@ import State.Demo.Brush;
 import State.Demo.Canvas;
 import State.Demo.Selection;
 import State.Exercise.*;
+import Strategy.Demo.BlackAndWhiteFilter;
+import Strategy.Demo.GifCompressor;
+import Strategy.Demo.ImageStorage;
+import Strategy.Demo.JpegCompressor;
+import Strategy.Exercise.AesEncryption;
+import Strategy.Exercise.ChatClient;
+import Strategy.Exercise.DesEncryption;
+import Strategy.Exercise.UnsupportedEncryption;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,10 +36,26 @@ public class Main {
         mementoPatter();
         statePattern();
         iteratorPattern();
+        strategyPatter();
+    }
+
+    public static void strategyPatter() {
+        System.out.println("\n__________Strategy Pattern__________");
+        ImageStorage imageStorage = new ImageStorage();
+        imageStorage.store("a", new JpegCompressor(), new BlackAndWhiteFilter());
+        imageStorage.store("a", new GifCompressor(), new BlackAndWhiteFilter());
+
+        ChatClient chatClient = new ChatClient();
+        chatClient.send("message", new DesEncryption());
+        chatClient.send("message", new AesEncryption());
+        try {
+            chatClient.send("message", new UnsupportedEncryption());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void iteratorPattern() {
-        // Iterator Pattern
         System.out.println("\n__________Iterator Pattern__________");
         BrowseHistory browseHistory = new BrowseHistory();
         browseHistory.push("a");
