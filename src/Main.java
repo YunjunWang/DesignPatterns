@@ -24,6 +24,9 @@ import Strategy.Exercise.AesEncryption;
 import Strategy.Exercise.ChatClient;
 import Strategy.Exercise.DesEncryption;
 import Strategy.Exercise.UnsupportedEncryption;
+import TemplateMethod.AuditTrail;
+import TemplateMethod.Demo.GenerateReportTask;
+import TemplateMethod.Demo.TransferMoneyTask;
 
 public class Main {
     public static void main(String[] args) {
@@ -37,6 +40,17 @@ public class Main {
         statePattern();
         iteratorPattern();
         strategyPatter();
+        templateMethodPattern();
+    }
+
+    public static void templateMethodPattern() {
+        System.out.println("\n__________Template Method Pattern__________");
+        TransferMoneyTask transferMoneyTask = new TransferMoneyTask();
+        transferMoneyTask.execute();
+
+        GenerateReportTask generateReportTask = new GenerateReportTask();
+        generateReportTask.execute();
+
     }
 
     public static void strategyPatter() {
