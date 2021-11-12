@@ -1,5 +1,16 @@
 import Abstraction.MailService;
 import Class.User;
+import Command.Demo.App.AddCustomerCommand;
+import Command.Demo.App.CustomerService;
+import Command.Demo.Composite.BlackAndWhiteFilterCommand;
+import Command.Demo.Composite.CompositeCommand;
+import Command.Demo.Composite.ResizeCommand;
+import Command.Demo.FX.Button;
+import Command.Demo.FX.Command;
+import Command.Demo.undo.BoldCommand;
+import Command.Demo.undo.CommandHistory;
+import Command.Demo.undo.HTMLDocument;
+import Command.Demo.undo.UndoCommand;
 import Encapsulation.Account;
 import Interface.TaxCalculator;
 import Interface.TaxCalculator2019;
@@ -24,7 +35,6 @@ import Strategy.Exercise.AesEncryption;
 import Strategy.Exercise.ChatClient;
 import Strategy.Exercise.DesEncryption;
 import Strategy.Exercise.UnsupportedEncryption;
-import TemplateMethod.AuditTrail;
 import TemplateMethod.Demo.GenerateReportTask;
 import TemplateMethod.Demo.TransferMoneyTask;
 
@@ -41,6 +51,37 @@ public class Main {
         iteratorPattern();
         strategyPatter();
         templateMethodPattern();
+        commandPattern();
+    }
+
+
+    public static void commandPattern() {
+        System.out.println("\n__________Command Pattern__________");
+        CustomerService customerService = new CustomerService();
+        Command addCustomerCmd = new AddCustomerCommand(customerService);
+        Button btn = new Button(addCustomerCmd);
+        btn.click();
+
+        CompositeCommand compositeCommand = new CompositeCommand();
+        compositeCommand.addCommand(new ResizeCommand());
+        compositeCommand.addCommand(new BlackAndWhiteFilterCommand());
+        compositeCommand.execute();
+
+
+        HTMLDocument document = new HTMLDocument();
+        CommandHistory history = new CommandHistory();
+        BoldCommand boldCommand = new BoldCommand(document, history);
+        document.setContent("Hello World!");
+        boldCommand.execute();
+        System.out.println(document.getContent());
+
+//        boldCommand.unexecute();
+//        System.out.println(document.getContent());
+
+        UndoCommand undoCommand = new UndoCommand(history);
+        undoCommand.execute();
+        System.out.println(document.getContent());
+
     }
 
     public static void templateMethodPattern() {
