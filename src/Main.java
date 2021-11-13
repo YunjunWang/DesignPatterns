@@ -5,6 +5,7 @@ import command.demo.app.CustomerService;
 import command.demo.composite.BlackAndWhiteFilterCommand;
 import command.demo.composite.CompositeCommand;
 import command.demo.composite.ResizeCommand;
+import command.demo.exercise.*;
 import command.demo.fx.Button;
 import command.demo.fx.Command;
 import command.demo.undo.BoldCommand;
@@ -81,6 +82,23 @@ public class Main {
         UndoCommand undoCommand = new UndoCommand(history);
         undoCommand.execute();
         System.out.println(document.getContent());
+
+        VideoEditor videoEditor = new VideoEditor();
+        LabelActionHistory actionHistory = new LabelActionHistory();
+        LabelCommand labelCommand = new LabelCommand(videoEditor, actionHistory);
+        ContrastActionHistory contrastActionHistory = new ContrastActionHistory();
+        ContrastCommand contrastCommand = new ContrastCommand(videoEditor, contrastActionHistory);
+        labelCommand.execute();
+        contrastCommand.execute();
+        System.out.println(videoEditor);
+
+        UndoLabelCommand undoLabelCommand = new UndoLabelCommand(actionHistory);
+        UndoContrastCommand undoContrastCommand = new UndoContrastCommand(contrastActionHistory);
+        undoLabelCommand.execute();
+        undoContrastCommand.execute();
+        System.out.println(videoEditor);
+
+
 
     }
 
