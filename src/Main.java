@@ -27,6 +27,10 @@ import inheritance_polymorphism.UIControl;
 import observer.demo.Chart;
 import observer.demo.DataSource;
 import observer.demo.Spreadsheet;
+import observer.exercise.Observable;
+import observer.exercise.StatusBar;
+import observer.exercise.Stock;
+import observer.exercise.StockListView;
 import state.demo.Brush;
 import state.demo.Canvas;
 import state.demo.Selection;
@@ -71,6 +75,13 @@ public class Main {
         dataSource.addObserver(chart);
 
         dataSource.setValue(1);
+
+        Stock stock = new Stock();
+        StatusBar statusBar = new StatusBar(stock);
+        StockListView stockListView = new StockListView(stock);
+        stock.addObserver(statusBar);
+        stock.addObserver(stockListView);
+        stock.setPrice(1.00F);
     }
 
     public static void commandPattern() {
