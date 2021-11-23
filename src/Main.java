@@ -24,6 +24,9 @@ import memento.demo.Originator;
 import inheritance_polymorphism.Checkbox;
 import inheritance_polymorphism.TextBox;
 import inheritance_polymorphism.UIControl;
+import observer.demo.Chart;
+import observer.demo.DataSource;
+import observer.demo.Spreadsheet;
 import state.demo.Brush;
 import state.demo.Canvas;
 import state.demo.Selection;
@@ -53,8 +56,22 @@ public class Main {
         strategyPatter();
         templateMethodPattern();
         commandPattern();
+        observerPattern();
+
     }
 
+    public static void observerPattern() {
+        System.out.println("\n__________Observer Pattern__________");
+        DataSource dataSource = new DataSource();
+        Spreadsheet spreadsheet1 = new Spreadsheet(dataSource);
+        Spreadsheet spreadsheet2 = new Spreadsheet(dataSource);
+        Chart chart = new Chart(dataSource);
+        dataSource.addObserver(spreadsheet1);
+        dataSource.addObserver(spreadsheet2);
+        dataSource.addObserver(chart);
+
+        dataSource.setValue(1);
+    }
 
     public static void commandPattern() {
         System.out.println("\n__________Command Pattern__________");
@@ -97,9 +114,6 @@ public class Main {
         undoLabelCommand.execute();
         undoContrastCommand.execute();
         System.out.println(videoEditor);
-
-
-
     }
 
     public static void templateMethodPattern() {
