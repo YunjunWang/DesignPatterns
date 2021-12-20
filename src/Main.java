@@ -17,6 +17,8 @@ import Interface.TaxCalculator;
 import Interface.TaxCalculator2019;
 import iterator.Iterator;
 import iterator.demo.BrowseHistory;
+import mediator.demo.ArticleDialogBox;
+import mediator.demo.DialogBox;
 import memento.exercise.Document;
 import memento.exercise.History;
 import memento.demo.Caretaker;
@@ -61,7 +63,14 @@ public class Main {
         templateMethodPattern();
         commandPattern();
         observerPattern();
+        mediatorPatter();
 
+    }
+
+    public static void mediatorPatter() {
+        System.out.println("\n__________Mediator Pattern__________");
+        ArticleDialogBox dialogBox = new ArticleDialogBox();
+        dialogBox.simulate();
     }
 
     public static void observerPattern() {
