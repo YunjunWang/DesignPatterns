@@ -19,6 +19,8 @@ import iterator.Iterator;
 import iterator.demo.BrowseHistory;
 import mediator.demo.ArticleDialogBox;
 import mediator.demo.DialogBox;
+import mediator.demo.observer.ArticleMediator;
+import mediator.exercise.SignUp;
 import memento.exercise.Document;
 import memento.exercise.History;
 import memento.demo.Caretaker;
@@ -71,6 +73,12 @@ public class Main {
         System.out.println("\n__________Mediator Pattern__________");
         ArticleDialogBox dialogBox = new ArticleDialogBox();
         dialogBox.simulate();
+        System.out.println("\n__________using Observer Pattern__________");
+        ArticleMediator articleMediator = new ArticleMediator();
+        articleMediator.simulate();
+        System.out.println("\n__________exercise__________");
+        SignUp signUp = new SignUp();
+        signUp.simulate();
     }
 
     public static void observerPattern() {
