@@ -1,5 +1,7 @@
 import abstraction.MailService;
 import Class.User;
+import chainOfResponsibility.exercise.*;
+import chainOfResponsibility.problem.*;
 import command.demo.app.AddCustomerCommand;
 import command.demo.app.CustomerService;
 import command.demo.composite.BlackAndWhiteFilterCommand;
@@ -18,7 +20,6 @@ import Interface.TaxCalculator2019;
 import iterator.Iterator;
 import iterator.demo.BrowseHistory;
 import mediator.demo.ArticleDialogBox;
-import mediator.demo.DialogBox;
 import mediator.demo.observer.ArticleMediator;
 import mediator.exercise.SignUp;
 import memento.exercise.Document;
@@ -31,7 +32,6 @@ import inheritance_polymorphism.UIControl;
 import observer.demo.Chart;
 import observer.demo.DataSource;
 import observer.demo.Spreadsheet;
-import observer.exercise.Observable;
 import observer.exercise.StatusBar;
 import observer.exercise.Stock;
 import observer.exercise.StockListView;
@@ -65,11 +65,46 @@ public class Main {
         templateMethodPattern();
         commandPattern();
         observerPattern();
-        mediatorPatter();
+        mediatorPattern();
+        chainOfResponsibilityPattern();
 
     }
 
-    public static void mediatorPatter() {
+    public static void chainOfResponsibilityPattern() {
+        System.out.println("\n__________Chain of Responsibility Pattern__________");
+        // Authenticator -> Logger -> Compressor
+        Compressor compressor = new Compressor(null);
+        Logger logger = new Logger(compressor);
+        Authenticator authenticator = new Authenticator(logger);
+        WebServer webServer = new WebServer(authenticator);
+        HttpRequest request = new HttpRequest("username", "12345");
+        webServer.handle(request);
+
+        System.out.println("\n__________exercise__________");
+        File excelFile = new File("text.xsl");
+        File numbersFile = new File("text.numbers");
+        File quickBooksFile = new File("text.qbw");
+        File pdfFile = new File("text.pdf");
+
+//        FileReader fileReader = DataReaderChain.getDataReaderChain();
+        var excelReader = new ExcelSheetReader(null);
+        var numbersReader = new NumbersSheetReader(excelReader);
+        var fileReader = new QuickBooksReader(numbersReader);
+        var dataReader = new FileReaderChain(fileReader);
+        dataReader.read(numbersFile);
+        dataReader.read(excelFile);
+        dataReader.read(quickBooksFile);
+        dataReader.read(excelFile);
+        dataReader.read(pdfFile);
+
+//        fileReader.read(numbersFile);
+//        fileReader.read(excelFile);
+//        fileReader.read(quickBooksFile);
+//        fileReader.read(pdfFile);
+
+    }
+
+    public static void mediatorPattern() {
         System.out.println("\n__________Mediator Pattern__________");
         ArticleDialogBox dialogBox = new ArticleDialogBox();
         dialogBox.simulate();
