@@ -49,6 +49,12 @@ import strategy.exercise.DesEncryption;
 import strategy.exercise.UnsupportedEncryption;
 import template_method.demo.GenerateReportTask;
 import template_method.demo.TransferMoneyTask;
+import visitor.demo.HighlightOperation;
+import visitor.demo.PlainTextOperation;
+import visitor.exercise.WavFile;
+import visitor.problem.AnchorNode;
+import visitor.problem.HeaderNode;
+import visitor.problem.HtmlDocument;
 
 public class Main {
     public static void main(String[] args) {
@@ -67,7 +73,26 @@ public class Main {
         observerPattern();
         mediatorPattern();
         chainOfResponsibilityPattern();
+        visitorPattern();
 
+    }
+
+    public static void visitorPattern() {
+        System.out.println("\n__________Visitor Pattern__________");
+        System.out.println("\n__________demo__________");
+        HtmlDocument document = new HtmlDocument();
+        document.addNode(new HeaderNode());
+        document.addNode(new AnchorNode());
+        document.execute(new HighlightOperation());
+        document.execute(new PlainTextOperation());
+//        document.highlight();
+//        document.plaintext();
+
+        System.out.println("\n__________exercise__________");
+        WavFile wavFile = WavFile.read("file1");
+        wavFile.normalize();
+        wavFile.reduceNoise();
+        wavFile.addReverb();
     }
 
     public static void chainOfResponsibilityPattern() {
